@@ -31,6 +31,7 @@ export default function HomePage() {
   const selectedUserIdRef = useRef<string | null>(null);
   const typingTimeoutRef = useRef<number | null>(null);
   const selectedUserId = selectedUser?._id ?? null;
+  const emphasizeOwnMessages = currentUser?.phone === "8493972906";
 
   const isLoggedIn = useMemo(() => Boolean(token && currentUser), [token, currentUser]);
 
@@ -265,6 +266,7 @@ export default function HomePage() {
             error={error}
             typing={typing}
             mobileOnlyShowBack={Boolean(selectedUser)}
+            emphasizeOwnMessages={emphasizeOwnMessages}
           />
         </div>
       </div>

@@ -13,6 +13,7 @@ type Props = {
   error: string;
   typing: boolean;
   mobileOnlyShowBack: boolean;
+  emphasizeOwnMessages?: boolean;
 };
 
 export default function ChatWindow({
@@ -26,7 +27,8 @@ export default function ChatWindow({
   loading,
   error,
   typing,
-  mobileOnlyShowBack
+  mobileOnlyShowBack,
+  emphasizeOwnMessages = false
 }: Props) {
   if (!selectedUser) {
     return (
@@ -90,6 +92,7 @@ export default function ChatWindow({
                 key={message._id}
                 message={message}
                 isMine={message.senderId === currentUser._id}
+                emphasizeMine={emphasizeOwnMessages}
               />
             ))}
           </div>
